@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // добавили
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -7,6 +8,8 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// Включаем CORS для всех доменов
+app.use(cors());
 
 // CORS (если отправка с другого сайта)
 app.use((req, res, next) => {
